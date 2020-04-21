@@ -33,5 +33,18 @@ namespace Creatures
             Inventory = new List<Item>();
             Skills = new List<Skill>();
         }
+
+        public Weapon GetEquippedWeapon()
+        {
+            Weapon result =  null;
+            foreach(Weapon w in Inventory)
+            {
+                if (w.Equipped)
+                {
+                    result = w;
+                }
+            }
+            return result;
+        }
     }
 }

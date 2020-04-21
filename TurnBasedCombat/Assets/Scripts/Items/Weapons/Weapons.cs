@@ -22,6 +22,6 @@ namespace Weapons
 
     public class Unarmed : Weapon
     {
-        public Unarmed(Creature o, string n = "Punch", bool e = false, int d = 4, int b = 0) : base(n, e, o, d, b) { }
+        public Unarmed(Creature o, string n = "Bare fists", bool e = false, int d = 4, int b = 0) : base(n, e, o, d, b) { }
     }
 }
