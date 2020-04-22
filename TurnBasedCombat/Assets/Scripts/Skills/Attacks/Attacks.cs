@@ -24,10 +24,35 @@ namespace Attacks
         public override void Effect()
         {
             base.Effect();
-            int damage = Random.Range(0, Weapon.Damage) + Weapon.Owner.Str + Weapon.Buff + 1;
-            Target.Hp -= damage;
-            Owner.Sp -= Cost;
-            Debug.Log("Dealing (" + damage + ") damage to " + Target.Name);
+            if(Owner.Sp >= Cost)
+            {
+                int damage = Random.Range(0, Weapon.Damage) + Weapon.Owner.Str + Weapon.Buff + 1;
+                Target.Hp -= damage;
+                Owner.Sp -= Cost;
+            }
+            else
+            {
+                //
+            }
+        }
+    }
+    public class SimpleSpell : Attack
+    {
+        public SimpleSpell(Creature o, int c = 2, string n = "Magic bolt", Creature t = null) : base(n, c, t, o) { }
+        public override void Effect()
+        {
+            int damage = -1;
+            base.Effect();
+            if(Owner.Sp >= Cost)
+            {
+                damage = Random.Range(1, 13) + Random.Range(1, 13) + Owner.Mag;
+                Target.Hp -= damage;
+                Owner.Sp -= Cost;
+            }
+            else
+            {
+                Debug.Log("Not enough");
+            }
         }
     }
 }

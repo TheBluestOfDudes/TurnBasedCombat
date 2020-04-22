@@ -47,6 +47,7 @@ public class Battle : MonoBehaviour {
         party[1] = new Creature("Brobert", Random.Range(20, 31), Random.Range(5, 11), 2, 2, 5, 5);
         party[1].Inventory.Add(new Wand(party[1], n: "Magic Stick", e: true));
         party[1].Skills.Add(new WeaponAttack(party[1], n: "Stick thwack", w: party[1].GetEquippedWeapon()));
+        party[1].Skills.Add(new SimpleSpell(party[1]));
         party[2] = new Creature("Shobert", Random.Range(20, 31), Random.Range(5, 11), 2, 2, 5, 5);
         party[2].Inventory.Add(new Unarmed(party[2], n: "Tough hands", e: true));
         party[2].Skills.Add(new WeaponAttack(party[2], n: "Punch", w: party[2].GetEquippedWeapon()));
