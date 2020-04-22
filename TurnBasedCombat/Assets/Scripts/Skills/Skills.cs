@@ -23,11 +23,35 @@ namespace Skills
         {
             //To be filled by inheritors
         }
+
+        public virtual bool IsAttack()
+        {
+            return false;
+        }
+
+        public virtual bool IsAbility()
+        {
+            return false;
+        }
     }
 
     public class Attack : Skill
     {
         public Attack() : base() { }
         public Attack(string n, int c, Creature t, Creature o) : base(n, c, t, o) { }
+        public override bool IsAttack()
+        {
+            return true;
+        }
+    }
+
+    public class Ability : Skill
+    {
+        public Ability() : base() { }
+        public Ability(string n, int c, Creature t, Creature o) : base(n, c, t, o) { }
+        public override bool IsAbility()
+        {
+            return true;
+        }
     }
 }

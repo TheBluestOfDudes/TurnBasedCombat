@@ -13,7 +13,9 @@ namespace Creatures
 
         public string Name { get; set; }            //The name of a creature
         public int Hp { get; set; }                 //A creature's health
+        public int MaxHP { get; set; }
         public int Sp { get; set; }                 //A creature's "special points". For using skills
+        public int MaxSP { get; set; }
         public int Str { get; set; }                //A creature's strength (used for physical attacks)
         public int Mag { get; set; }                //A creature's magic strength (used for magical attacks)
         public int Dodge { get; set; }              //A stat for dodging special attacks
@@ -25,7 +27,9 @@ namespace Creatures
         {
             Name = n;
             Hp = h;
+            MaxHP = h;
             Sp = s;
+            MaxSP = s;
             Str = st;
             Mag = m;
             Dodge = d;
@@ -37,11 +41,11 @@ namespace Creatures
         public Weapon GetEquippedWeapon()
         {
             Weapon result =  null;
-            foreach(Weapon w in Inventory)
+            foreach(Item w in Inventory)
             {
-                if (w.Equipped)
+                if (w.IsWeapon() && w.Equipped)
                 {
-                    result = w;
+                    result = (Weapon)w;
                 }
             }
             return result;
@@ -50,9 +54,36 @@ namespace Creatures
         public List<Attack> GetAttacks()
         {
             List<Attack> result = new List<Attack>();
-            foreach(Attack o in Skills)
+            foreach(Skill o in Skills)
             {
-                result.Add(o);
+                if (o.IsAttack())
+                {
+                    result.Add((Attack)o);
+                }
+            }
+            return result;
+        }
+        public List<Ability> GetAbilities()
+        {
+            List<Ability> result = new List<Ability>();
+            foreach(Skill o in Skills)
+            {
+                if (o.IsAbility())
+                {
+                    result.Add((Ability)o);
+                }
+            }
+            return result;
+        }
+        public List<Consumable> GetConsumables()
+        {
+            List<Consumable> result = new List<Consumable>();
+            foreach(Item o in Inventory)
+            {
+                if (o.IsConsumable())
+                {
+                    result.Add((Consumable)o);
+                }
             }
             return result;
         }

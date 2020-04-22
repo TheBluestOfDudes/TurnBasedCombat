@@ -30,6 +30,14 @@ namespace Items
         {
             //Filled in by inheritors
         }
+        public virtual bool IsWeapon()
+        {
+            return false;
+        }
+        public virtual bool IsConsumable()
+        {
+            return false;
+        }
 
     }
 
@@ -49,5 +57,22 @@ namespace Items
         }
 
         public Weapon() : base() { }
+        public override bool IsWeapon()
+        {
+            return true;
+        }
+    }
+
+    public class Consumable : Item
+    {
+        public int Uses { get; set; }
+        public Consumable(string n, Creature o, int u, bool e = false) : base(n, e, o)
+        {
+            Uses = u;
+        }
+        public override bool IsConsumable()
+        {
+            return true;
+        }
     }
 }
