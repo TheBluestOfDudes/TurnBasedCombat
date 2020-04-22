@@ -24,4 +24,10 @@ namespace Skills
             //To be filled by inheritors
         }
     }
+
+    public class Attack : Skill
+    {
+        public Attack() : base() { }
+        public Attack(string n, int c, Creature t, Creature o) : base(n, c, t, o) { }
+    }
 }

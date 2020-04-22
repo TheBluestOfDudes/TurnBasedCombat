@@ -46,5 +46,15 @@ namespace Creatures
             }
             return result;
         }
+
+        public List<Attack> GetAttacks()
+        {
+            List<Attack> result = new List<Attack>();
+            foreach(Attack o in Skills)
+            {
+                result.Add(o);
+            }
+            return result;
+        }
     }
 }

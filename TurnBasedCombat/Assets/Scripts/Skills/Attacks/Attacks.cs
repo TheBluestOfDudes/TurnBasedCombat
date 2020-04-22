@@ -7,7 +7,7 @@ using Weapons;
 using Items;
 namespace Attacks
 {
-    public class WeaponAttack : Skill
+    public class WeaponAttack : Attack
     {
         public Weapon Weapon { get; set; }
         public WeaponAttack(Creature o, int c = 0, string n = "Basic attack", Creature t = null, Weapon w = null) : base(n, c, t, o)
